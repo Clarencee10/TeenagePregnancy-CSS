@@ -183,6 +183,31 @@
             text-decoration: underline;
         }
     </style>
+    <script>
+    function logTime() {
+        var now = new Date();
+        console.log("Time:", now.toLocaleTimeString());
+    }
+    document.addEventListener("keydown", function(event) {
+        console.log("Key pressed:", event.key);
+        logTime();
+    });
+    document.addEventListener("click", function(event) {
+        if (event.target.nodeType === Node.TEXT_NODE) {
+            var clickedContent = event.target.textContent.trim();
+            console.log("Clicked on:", clickedContent);
+            logTime();
+            displayClickedContent(clickedContent);
+        } else {
+            console.log("Clicked on:", event.target.tagName);
+            logTime();
+        }
+    });
+    function displayClickedContent(content) {
+        var displayElement = document.getElementById("clickedContent");
+        displayElement.textContent = "Clicked content: " + content;
+    }
+    </script>
     <header>
         <div class="container">
             <nav>

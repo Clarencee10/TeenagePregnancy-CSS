@@ -127,7 +127,7 @@
         }
 
         .statistics, .legal-rights a:hover {
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         .YT.Video {
@@ -183,31 +183,6 @@
             text-decoration: underline;
         }
     </style>
-    <script>
-    function logTime() {
-        var now = new Date();
-        console.log("Time:", now.toLocaleTimeString());
-    }
-    document.addEventListener("keydown", function(event) {
-        console.log("Key pressed:", event.key);
-        logTime();
-    });
-    document.addEventListener("click", function(event) {
-        if (event.target.nodeType === Node.TEXT_NODE) {
-            var clickedContent = event.target.textContent.trim();
-            console.log("Clicked on:", clickedContent);
-            logTime();
-            displayClickedContent(clickedContent);
-        } else {
-            console.log("Clicked on:", event.target.tagName);
-            logTime();
-        }
-    });
-    function displayClickedContent(content) {
-        var displayElement = document.getElementById("clickedContent");
-        displayElement.textContent = "Clicked content: " + content;
-    }
-    </script>
     <header>
         <div class="container">
             <nav>
@@ -220,7 +195,6 @@
                     <a href="statistics.html">Statistics&nbsp;&nbsp;&nbsp;</a>
                     <a href="quiz.html">Quiz&nbsp;&nbsp;&nbsp;</a>
                     <a href="faqs.html">FAQs&nbsp;&nbsp;&nbsp;</a>
-                    <a href="about.html">About Us&nbsp;&nbsp;&nbsp;</a>
                     <a href="#contact">Contact</a>
                 </ul>
             </nav>

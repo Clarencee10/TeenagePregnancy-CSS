@@ -33,6 +33,13 @@
             color: #fff;
             padding: 10px 0;
         }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+        }
     
         nav {
             display: flex;
@@ -45,6 +52,9 @@
         }
 
         .logo h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            text-decoration: none;
             margin: 0;
         }
 
@@ -102,13 +112,81 @@
         }
 
         .index ul {
-            text-align: left;
-            margin-bottom: 40px;
+            list-style: none;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         .index ul li {
-            font-size: 1.1em;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(33.33% - 20px); 
+            flex: 1;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .index ul li:hover {
+            transform: translateY(-5px);
+        }
+
+        .index ul li strong {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .index ul li p {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+
+        .card {
+            perspective: 1000px;
+            width: 500px;
+            height: 300px; 
+            margin: 0 auto; 
             margin-bottom: 20px;
+            position: relative; /
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.5s;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 20px; 
+            box-sizing: border-box;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background-color: #f0f0f0;
+            overflow: auto;
+        }
+
+        .card-back p {
+            max-height: 200px; 
+            overflow: auto; 
+        }
+
+        .card:hover .card-front, .card.flip .card-front {
+            transform: rotateY(-180deg);
+        }
+
+        .card:hover .card-back, .card.flip .card-back {
+            transform: rotateY(0deg);
         }
 
         .articles {
@@ -148,12 +226,74 @@
 
         .articles ul li a {
             color: #333;
-            text-decoration: none;
+            text-decoration: underline;
         }
 
         .articles ul li a:hover {
             text-decoration: underline;
         }
+
+        .aboutus {
+            background-color: #f9f9f9;
+            padding: 50px 0;    
+        }
+
+
+        .aboutus, h1 {
+            font-size: 2.5rem;
+            margin-bottom: 75px;
+            text-align: center;
+            color: #333;
+        }
+
+        .row {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .profile {
+            width: 250px; 
+            margin: 0 30px; 
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            display: inline-block; 
+            vertical-align: top; 
+        }
+
+
+        .profile:hover {
+            transform: translateY(-10px);
+        }       
+
+        .profile img {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+            margin-top: -50px;
+            border: 5px solid #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-details {
+            padding: 10px;
+        }
+
+        .member-details h2 {
+            margin-top: 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .member-details p {
+            margin: 5px 0;
+            font-size: 1rem;
+            color: #666;
+        }
+
 
         footer {
             background-color: #333;
@@ -189,12 +329,9 @@
                 </div>
                 <ul>
                     <a href="index.html">Home &nbsp;&nbsp;&nbsp;</a>
-                    <a href="resources.html">Resources&nbsp;&nbsp;&nbsp;</a>
-                    <a href="statistics.html">Statistics&nbsp;&nbsp;&nbsp;</a>
-                    <a href="quiz.html">Quiz&nbsp;&nbsp;&nbsp;</a>
-                    <a href="faqs.html">FAQs&nbsp;&nbsp;&nbsp;</a>
-                    <a href="about.html">About Us&nbsp;&nbsp;&nbsp;</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#articles">Articles &nbsp;&nbsp;&nbsp;</a>
+                    <a href="#aboutus">About Us&nbsp;&nbsp;&nbsp;</a>
+                    <a href="#contact">Contact Us</a>
                 </ul>
             </nav>
         </div>
@@ -204,19 +341,46 @@
         <div class="container">
             <h1>Welcome to <em>Preggy Health</em></h1>
             <h2>Empowering Teenagers Through Education and Support</h2>
-                <p>Welcome to <strong>Preggy Health</strong>, a resource hub dedicated to providing i nformation, support, and guidance for teenagers facing the challenges of pregnancy. We understand that teenage pregnancy can be a daunting experience, but you are not alone. Our mission is to empower pregnant teenagers with knowledge, resources, and community support to navigate this journey with confidence and resilience.</p>
-        
+            <p>Welcome to <strong>Preggy Health</strong>, a resource hub dedicated to providing information, support, and guidance for teenagers facing the challenges of pregnancy. We understand that teenage pregnancy can be a daunting experience, but you are not alone. Our mission is to empower pregnant teenagers with knowledge, resources, and community support to navigate this journey with confidence and resilience.</p>
+            
             <h3>What We Offer:</h3>
-                <ul>
-                    <li><strong>Information and Education:</strong> We believe that knowledge is power. Our website offers accurate and up-to-date information about teenage pregnancy, including its causes, risks, and prevention strategies. We provide comprehensive resources on prenatal care, childbirth, parenting, and reproductive health, equipping teenagers with the knowledge they need to make informed decisions about their health and well-being.</li>
-                    <li><strong>Support and Counseling:</strong> Pregnancy can bring about a whirlwind of emotions and uncertainties. That's why we offer a safe and supportive space for teenagers to seek guidance and counseling. Whether you're feeling overwhelmed, confused, or in need of someone to talk to, our team of experienced counselors is here to listen, provide encouragement, and offer practical advice.</li> 
-                    <li><strong>Community and Connection:</strong> Feeling understood and supported by others who have walked a similar path can make all the difference. Our website hosts forums, support groups, and online communities where pregnant teenagers can connect with peers, share experiences, and offer each other support and encouragement. Together, we can break the stigma surrounding teenage pregnancy and build a supportive community where every teenager feels valued and supported.</li>
-                </ul> 
+            <ul class="card-list">
+                <li class="card">
+                    <div class="card-front">
+                        <img src="./assets/images/image1.png" alt="Image 1">
+                        <h4>Information and Education</h4>
+                    </div>
+                    <div class="card-back">
+                        <p>We believe that knowledge is power. Our website offers accurate and up-to-date information about teenage pregnancy, including its causes, risks, and prevention strategies. We provide comprehensive resources on prenatal care, childbirth, parenting, and reproductive health, equipping teenagers with the knowledge they need to make informed decisions about their health and well-being.</p>
+                    </div>
+                </li>
+    
+                <li class="card">
+                    <div class="card-front">
+                        <img src="./assets/images/image2.png" alt="Image 2">
+                        <h4>Support and Counseling</h4>
+                    </div>
+                    <div class="card-back">
+                        <p>We can bring about a whirlwind of emotions and uncertainties. That's why we offer a safe and supportive space for teenagers to seek guidance and counseling. Whether you're feeling overwhelmed, confused, or in need of someone to talk to, our team of experienced counselors is here to listen, provide encouragement, and offer practical advice.</p>
+                    </div>
+                </li>
+    
+                <li class="card">
+                    <div class="card-front">
+                        <img src="./assets/images/image3.png" alt="Image 3">
+                        <h4>Community and Connection</h4>
+                    </div>
+                    <div class="card-back">
+                        <p>Our website hosts forums, support groups, and online communities where pregnant teenagers can connect, share experiences, and offer support and encouragement. Together, we can break the stigma surrounding teenage pregnancy and build a supportive community where every teenager feels valued.</p>
+                    </div>
+                </li>
+            </ul> 
             <p><strong>Get Started:</strong> Are you a pregnant teenager seeking information, support, or resources? Explore our website to access a wealth of valuable resources tailored to your needs. Remember, you are not alone on this journey. Together, we can empower each other to navigate teenage pregnancy with strength, resilience, and hope.</p>
         
             <p><a href="getstarted.html">Get Started Now</a></p>
         </div>
     </section>
+    
 
     <section id="articles" class="articles">
         <div class="container">
@@ -241,6 +405,54 @@
             </ul>
         </div>
     </section>
+
+    <section id="aboutus" class="aboutus">
+        <div class="container">
+            <h1>Our Team</h1>
+            <div class="row">
+                <div class="col-md3 profile text-center">
+                    <div class="img-box">
+                        <img src="assets/images/member1.jpg" alt="Team Member 1" width="200" height="200">
+                        <div class="member-details">
+                            <h2>Clarence Maneja</h2>
+                            <p>Lead Developer</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md3 profile text-center">
+                    <div class="img-box">
+                        <img src="assets/images/member2.jpg" alt="Team Member 2" width="200" height="200">
+                        <div class="member-details">
+                            <h2>Ella Forteo Galarosa</h2>
+                            <p>Content Writer</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md3 profile text-center">
+                    <div class="img-box">
+                        <img src="assets/images/member3.jpg" alt="Team Member 3" width="200" height="200">
+                        <div class="member-details">
+                            <h2>John James Losito</h2>
+                            <p>Content Writer</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md3 profile text-center">
+                    <div class="img-box">
+                        <img src="assets/images/member4.jpg" alt="Team Member 4" width="200" height="200">
+                        <div class="member-details">
+                            <h2>Floyd Nacional</h2>
+                            <p>Content Writer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
      
     <footer>
         <section id="contact" class="contact-section">
@@ -258,5 +470,13 @@
                 </div>
         </section>
     </footer>
+
+    <script>
+        document.querySelectorAll('.card').forEach(function(card) {
+            card.addEventListener('click', function() {
+                card.classList.toggle('flip');
+            });
+        });
+    </script>
 </body>
 </html>

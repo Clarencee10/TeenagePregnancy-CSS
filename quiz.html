@@ -6,9 +6,10 @@
     <title>Quiz</title>
     <meta name="description" content="Test your knowledge and assess your risk factors for teenage pregnancy with our interactive quiz.">
     <meta name="keywords" content="teenage pregnancy quiz, risk assessment, contraception, sex education, reproductive health services">
+    <link rel="stylesheet" href="styles.css">
 </head>
-    <style>
-        body, ul, ol {
+<style> 
+    body, ul, ol {
             margin: 0;
             padding: 0;
         }
@@ -25,6 +26,9 @@
             max-width: 960px;
             margin: 0 auto;
             padding: 0 20px;
+            display: flex; /* Make it a flex container */
+            flex-direction: column; /* Stack children vertically */
+            align-items: center; /* Center children vertically */
         }
 
         header {
@@ -82,34 +86,78 @@
             text-decoration: underline;
         }
 
-        .quiz {
-            padding: 40px 0;
+        .app{
+            color: #001e4d;
+            width: 90%;
+            max-width: 600px;
+            margin: 100px auto 0;
+            border-radius: 10px;
+            padding: 30px;
         }
 
-        .quiz h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+        .app h1{
+            font-size: 25px;
+            color: #001e4d;
+            font-weight: 600;
+            border-bottom: 1px solid #333;
+            padding-bottom: 30px;
         }
 
-        .question {
-            margin-bottom: 20px;
+        .quiz{
+            padding: 0px 0;
+            text-align: center;
         }
 
-        .option {
-            margin-bottom: 10px;
+        .quiz h2{
+            font-size: 18px;
+            color: #000000;
+            font-weight: 600;
+            padding: 10px;
         }
 
         .btn {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
+            background: #fff;
+            color: #222;
+            font-weight: 500;
+            width: 100%; /* Adjust the width as desired */
+            max-width: 200px; /* Set a maximum width if needed */
+            border: 1px solid #222;
+            padding: 10px;
+            margin: 10px auto; /* Center the button horizontally */
+            text-align: center; /* Center the text horizontally */
+            border-radius: 4px;
             cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .btn:hover {
-            background-color: #555;
+        .btn:hover:not([disabled]){
+            background: #222;
+            color: #fff;
+        }
+
+        .btn:disabled{
+            cursor: no-drop;
+        }
+
+        #next-btn{
+            background: #272a2f;
+            color: #fff;
+            font-weight: 500;
+            width: 150px;
+            border: 0;
+            padding: 10px;
+            margin: 20px auto 0;
+            border-radius: 4px;
+            cursor: pointer;
+            display: none;
+        }
+ 
+        .correct{
+            background: #9aeabc;
+        }
+
+        .incorrect{
+            background: #ff9393;
         }
 
 
@@ -117,6 +165,7 @@
             background-color: #333;
             color: #fff;
             padding: 20px 0;
+            margin-top: 150px;
             text-align: center;
         }
 
@@ -126,18 +175,19 @@
 
         footer ul li {
             display: inline;
-            margin-right: 20px;
+            margin-right: 10px;
         }
 
-        footer a {
+        footer ul li a {
             color: #fff;
             text-decoration: none;
         }
 
-        footer a:hover {
+        footer ul li a:hover {
             text-decoration: underline;
         }
-    </style>
+
+</style>
 <body>
     <header>
         <div class="container">
@@ -146,181 +196,50 @@
                     <h1><em>Preggy Health</em></h1>
                 </div>
                 <ul>
-                    <a href="index.html">Home &nbsp;&nbsp;&nbsp;</a>
-                    <a href="resources.html">Resources&nbsp;&nbsp;&nbsp;</a>
-                    <a href="statistics.html">Statistics&nbsp;&nbsp;&nbsp;</a>
-                    <a href="quiz.html">Quiz&nbsp;&nbsp;&nbsp;</a>
-                    <a href="faqs.html">FAQs&nbsp;&nbsp;&nbsp;</a>
-                    <a href="about.html">About Us&nbsp;&nbsp;&nbsp;</a>
-                    <a href="#contact">Contact</a>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="statistics.html">Statistics</a></li>
+                    <li><a href="quiz.html" class="active">Quiz</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
     <section id="quiz" class="quiz">
         <div class="container">
-            <h1>Teenage Pregnancy Awareness Quiz</h1>
-            <div id="quiz">
-                <div class="question">
-                    <label><strong>Question 1:</strong> What is the average age of a teenager when they become sexually active?</label>
-                    <div class="option">
-                        <input type="radio" name="q1" value="a"> a) 16 years old<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q1" value="b"> b) 13 years old<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q1" value="c"> c) 18 years old<br>
-                    </div>
-                </div>
-                <div class="question">
-                    <label><strong>Question 2:</strong> Which of the following factors can contribute to teenage pregnancy?</label>
-                    <div class="option">
-                        <input type="radio" name="q2" value="a"> a) Lack of sex education<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q2" value="b"> b) Peer pressure<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q2" value="c"> c) Poverty<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q2" value="d"> d) All of the above<br>
-                    </div>
-                </div>
-                <div class="question">
-                    <label><strong>Question 3:</strong> What percentage of teenage pregnancies are unintended?</label>
-                    <div class="option">
-                        <input type="radio" name="q3" value="a"> a) 40%<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q3" value="b"> b) 80%<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q3" value="c"> c) 20%<br>
-                    </div>
-                </div>
-                <div class="question">
-                    <label><strong>Question 4:</strong> Which contraceptive method is most effective at preventing pregnancy?</label>
-                    <div class="option">
-                        <input type="radio" name="q4" value="a"> a) Condoms<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q4" value="b"> b) Birth control pills<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q4" value="c"> c) Intrauterine devices (IUDs)<br>
-                    </div>
-                </div>
-                <div class="question">
-                    <label><strong>Question 5:</strong> What are potential consequences of teenage pregnancy?</label>
-                    <div class="option">
-                        <input type="radio" name="q5" value="a"> a) Health risks for mother and baby<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q5" value="b"> b) Disruption of education<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q5" value="c"> c) Financial challenges<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q5" value="d"> d) All of the above<br>
-                    </div>
-                </div>
-                <div class="question">
-                    <label><strong>Question 6:</strong> What is the leading cause of death for teenage mothers?</label>
-                    <div class="option">
-                        <input type="radio" name="q6" value="a"> a) Homicide<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q6" value="b"> b) Suicide<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q6" value="c"> c) Complications from childbirth<br>
-                    </div>
-                </div>
-                <div class="question">
-                    <label><strong>Question 7:</strong> How does teenage pregnancy impact mental health?</label>
-                    <div class="option">
-                        <input type="radio" name="q7" value="a"> a) Increased risk of depression<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q7" value="b"> b) Higher likelihood of anxiety disorders<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q7" value="c"> c) Low self-esteem<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q7" value="d"> d) All of the above<br>
-                    </div>
-                </div>
-                <div class="question">
-                    <label><strong>Question 8:</strong> What is the role of parents in preventing teenage pregnancy?</label>
-                    <div class="option">
-                        <input type="radio" name="q8" value="a"> a) Open communication about sex and contraception<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q8" value="b"> b) Setting clear expectations and boundaries<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q8" value="c"> c) Providing access to sexual health resources<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q8" value="d"> d) All of the above<br>
-                    </div>
-                </div>
-                <div class="question">
-                    <label><strong>Question 9:</strong> What is the role of comprehensive sex education in preventing teenage pregnancy?</label>
-                    <div class="option">
-                        <input type="radio" name="q9" value="a"> a) Provides accurate information about contraception<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q9" value="b"> b) Teaches negotiation and refusal skills<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q9" value="c"> c) Encourages healthy decision-making<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q9" value="d"> d) All of the above<br>
-                    </div>
-                </div>
-                <div class="question">
-                    <label><strong>Question 10:</strong> How can healthcare providers support teenage pregnancy prevention?</label>
-                    <div class="option">
-                        <input type="radio" name="q10" value="a"> a) Offer confidential and non-judgmental care<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q10" value="b"> b) Provide access to contraception<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q10" value="c"> c) Offer counseling and support services<br>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q10" value="d"> d) All of the above<br>
-                    </div>
-                </div>
+            <a href="quiz.html" >
+            </a>
+            <h1>Test your Knowledge on Teenage Pregnancy</h1>
+            <h2 id="question">Question goes here</h2>
+            <div id="answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
             </div>
-            <br>
-            <button class="btn" onclick="submitQuiz()">Submit</button>
+            <button id="next-btn">Next</button>
         </div>
     </section>
 
-        <br>
     <footer>
         <section id="contact" class="contact-section">
-            <div class="contact-section">
-                    <a href="#contact">Contact Us </a>
-                    <ul>
-                        <li>Email: <a href="mailto:cjbm2022-7360367367@bicol-u.edu.ph">cjbm2022-7360367367@bicol-u.edu.ph</a></li>
-                        <li>Phone: +63-9512117647</li>
-                        <li>Follow Us: 
-                            <a href="https://facebook.com/yourpage">Facebook</a>, 
-                            <a href="https://twitter.com/yourpage">Twitter</a>, 
-                            <a href="https://instagram.com/yourpage">Instagram</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="container">
+                <h2>Contact Us</h2>
+                <ul>
+                    <li>Email: <a href="mailto:cjbm2022-7360367367@bicol-u.edu.ph">cjbm2022-7360367367@bicol-u.edu.ph</a></li>
+                    <li>Phone: +63-9512117647</li>
+                    <li>Follow Us: 
+                        <a href="https://facebook.com/yourpage">Facebook</a>, 
+                        <a href="https://twitter.com/yourpage">Twitter</a>, 
+                        <a href="https://instagram.com/yourpage">Instagram</a>
+                    </li>
+                </ul>
+            </div>
         </section>
     </footer>
+
+    <script src="js/preggy-script.js"></script>
 </body>
 </html>

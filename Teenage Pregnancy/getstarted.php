@@ -112,6 +112,61 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/F1G91jXIOCE?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </section>
+    <section id="updateInfo" class="newInfo">
+        <div class="container">
+            <h2>Comment your suggestions and useful information here.</h2>
+            <form action="" method="post">
+                <label for="comment">Your Comment:</label><br>
+                <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
+                <label for="username">Your Name:</label><br>
+                <input type="text" id="username" name="username"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+            <?php
+        function saveComment($username, $comment) {
+            $servername = "localhost";
+            $db_username = "root";
+            $db_password = "1234"; // Assuming no password
+            $dbname = "web_system";
+
+            // Create connection
+            $conn = new mysqli($servername, $db_username, $db_password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Prepare and bind
+            $stmt = $conn->prepare("INSERT INTO info (user, comments) VALUES (?, ?)");
+            $stmt->bind_param("ss", $username, $comment);
+
+            // Execute the statement
+            if ($stmt->execute()) {
+                echo "<div class='success-message'>Comment saved successfully</div>";
+            } else {
+                echo "<div class='error-message'>Error: " . $stmt->error . "</div>";
+            }
+
+            // Close connections
+            $stmt->close();
+            $conn->close();
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['username']) && isset($_POST['comment'])) {
+                $username = $_POST['username'];
+                $comment = $_POST['comment'];
+
+                // Save the comment
+                saveComment($username, $comment);
+            } else {
+                echo "<div class='error-message'>Please provide both username and comment</div>";
+            }
+        }
+        ?>
+        </div>
+    </section>
 
     <footer>
         <section id="contact" class="contact-section">
